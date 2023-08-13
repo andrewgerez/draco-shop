@@ -19,8 +19,8 @@ export const {
       gray300: '#c4c4cc',
       gray100: '#e1e1e6',
 
-      red500: '#600b04',
-      red300: '#900603',
+      purple500: '#3c00a9',
+      purple300: '#5a00ff',
     }
   }
 })
