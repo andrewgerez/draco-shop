@@ -20,7 +20,14 @@ export const {
       gray100: '#e1e1e6',
 
       purple500: '#3c00a9',
-      purple300: '#5a00ff',
-    }
+      purple300: '#672AE8',
+    },
+
+    fontSizes: {
+      md: '1.125rem',
+      lg: '1.25rem',
+      xl: '1.5rem',
+      '2xl': '2rem',
+    },
   }
 })
