@@ -8,7 +8,7 @@ export const HomeContainer = styled('main', {
   minHeight: 656,
 })
 
-export const Product = styled('a', {
+export const Product = styled('div', {
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
@@ -40,6 +40,7 @@ export const Product = styled('a', {
 
     strong: {
       fontSize: '$lg',
+      color: '$gray100', 
     },
   
     span: {
