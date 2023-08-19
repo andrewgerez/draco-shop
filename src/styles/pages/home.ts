@@ -13,7 +13,7 @@ export const Product = styled('a', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  background: 'linear-gradient(180deg, #201EA4 0%, #7465d4 100%)',
+  background: 'linear-gradient(180deg, #7465d4 0%, #201EA4 100%)',
   borderRadius: 8,
   cursor: 'pointer',
   overflow: 'hidden',
