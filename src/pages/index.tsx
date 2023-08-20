@@ -12,7 +12,7 @@ interface IHome {
     id: string;
     name: string;
     imageUrl: string;
-    price: number;
+    price: string;
   }[]
 }
 
