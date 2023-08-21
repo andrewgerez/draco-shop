@@ -4,6 +4,7 @@ import { GetServerSideProps } from "next";
 import { stripe } from "../lib/stripe";
 import Stripe from "stripe";
 import Image from "next/image";
+import Head from "next/head";
 
 interface ISuccess {
   customerName: string;
@@ -15,26 +16,34 @@ interface ISuccess {
 
 export default function Success({ customerName, product }: ISuccess) {
   return (
-    <SuccessContainer>
-      <h1>Compra efetuada!</h1>
+    <>
+      <Head>
+        <title>Compra efetuada | Draco Shop</title>
+        
+        <meta name="robots" content="noindex" />
+      </Head>
 
-      <ImageContainer>
-        <Image
-          src={product.imageUrl}
-          width={120}
-          height={110}
-          alt=""
-        />
-      </ImageContainer>
+      <SuccessContainer>
+        <h1>Compra efetuada!</h1>
 
-      <p>
-        Uhuul <strong>{customerName}</strong>, seu <strong>pedido</strong> já está a caminho da sua casa.
-      </p>
+        <ImageContainer>
+          <Image
+            src={product.imageUrl}
+            width={120}
+            height={110}
+            alt=""
+          />
+        </ImageContainer>
 
-      <Link href="/">
-        Voltar ao catálogo
-      </Link>
-    </SuccessContainer>
+        <p>
+          Uhuul <strong>{customerName}</strong>, seu <strong>pedido</strong> já está a caminho da sua casa.
+        </p>
+
+        <Link href="/">
+          Voltar ao catálogo
+        </Link>
+      </SuccessContainer>
+    </>
   )
 }
 
