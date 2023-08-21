@@ -3,7 +3,6 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { stripe } from '../../lib/stripe'
 import Stripe from 'stripe'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 import axios from 'axios'
 import { useState } from 'react'
 import Head from 'next/head'
@@ -40,14 +39,12 @@ export default function Product({ product }: IProduct) {
     }
   }
 
-  const { isFallback } = useRouter()
-
   return (
     <>
       <Head>
         <title>{product.name} | Draco Shop</title>
       </Head>
-      
+
       <ProductContainer>
         <ImageContainer>
           <Image

@@ -23,16 +23,15 @@ export const Product = styled('div', {
   },
 
   footer: {
+    width: '100%',
+    height: '10rem',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
     position: 'absolute',
-    bottom: '0.25rem',
-    left: '0.25rem',
-    right: '0.25rem',
-    padding: '2rem',
-    background: 'rgba(0, 0, 0, 0.6)',
-    borderRadius: 6,
+    bottom: 0,
+    padding: '2.5rem',
+    background: 'linear-gradient(0deg, rgba(0, 0, 0, 0.9) 1%, rgba(0, 0, 0, 0.6) 50%, transparent 100%)',
 
     transform: 'translateY(110%)',
     opacity: 0,
