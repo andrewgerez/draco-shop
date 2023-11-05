@@ -7,9 +7,15 @@ import axios from 'axios'
 import { useState } from 'react'
 import Head from 'next/head'
 import { Product } from '../../interfaces/product'
+import { useBagStore } from '../../store/bagStore'
 
 export default function Product({ product }: Product) {
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
+  const { addToBag } = useBagStore(store => {
+    return {
+      addToBag: store.addToBag
+    }
+  })
 
   async function handleBuyProduct() {
     try {
@@ -51,8 +57,8 @@ export default function Product({ product }: Product) {
 
           <p>{product.description}</p>
 
-          <button disabled={isCreatingCheckoutSession} onClick={handleBuyProduct}>
-            Comprar agora
+          <button onClick={() => addToBag(product)}>
+            Colocar na sacola
           </button>
         </ProductDetails>
       </ProductContainer>

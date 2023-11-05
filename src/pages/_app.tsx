@@ -10,9 +10,10 @@ import { useBagStore } from "../store/bagStore"
 globalStyles()
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { updateVisibility } = useBagStore(store => {
+  const { updateVisibility, bagItems } = useBagStore(store => {
     return {
-      updateVisibility: store.updateVisibility
+      updateVisibility: store.updateVisibility,
+      bagItems: store.bagItems
     }
   })
 
@@ -28,6 +29,9 @@ export default function App({ Component, pageProps }: AppProps) {
           alt="" 
         />
         <button onClick={updateVisibility}>
+          {bagItems.length > 0 && (
+            <span>{bagItems.length}</span>
+          )}
           <Bag size={24} />
         </button>
       </Header>

@@ -11,4 +11,6 @@ export interface BagStore {
   open: boolean;
   bagItems: Product[];
   updateVisibility: () => void;
+  addToBag: (product: Product) => void;
+  removeFromBag: (id: string) => void;
 }
