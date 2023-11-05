@@ -6,19 +6,9 @@ import Image from 'next/image'
 import axios from 'axios'
 import { useState } from 'react'
 import Head from 'next/head'
+import { Product } from '../../interfaces/product'
 
-interface IProduct {
-  product: {
-    id: string;
-    name: string;
-    imageUrl: string;
-    price: string;
-    description: string;
-    defaultPriceId: string;
-  }
-}
-
-export default function Product({ product }: IProduct) {
+export default function Product({ product }: Product) {
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
 
   async function handleBuyProduct() {
