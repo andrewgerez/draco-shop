@@ -8,6 +8,7 @@ import { useState } from 'react'
 import Head from 'next/head'
 import { Product } from '../../interfaces/product'
 import { useBagStore } from '../../store/bagStore'
+import { v4 as uuid } from "uuid"
 
 export default function Product({ product }: Product) {
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
@@ -57,7 +58,7 @@ export default function Product({ product }: Product) {
 
           <p>{product.description}</p>
 
-          <button onClick={() => addToBag(product)}>
+          <button onClick={() => addToBag({...product, id: product.id + "-" + uuid()})}>
             Colocar na sacola
           </button>
         </ProductDetails>

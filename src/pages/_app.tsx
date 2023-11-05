@@ -3,20 +3,12 @@ import { globalStyles } from "../styles/global"
 import logoImage from '../assets/logo.png'
 import Image from "next/image"
 import { Container, Header } from "../styles/pages/app"
-import { Bag } from "phosphor-react";
-import MyBag from "../components/myBag"
-import { useBagStore } from "../store/bagStore"
+import MyBag from "../components/MyBag"
+import { MyBagButton } from "../components/MyBag/MyBagButton"
 
-globalStyles()
+globalStyles();
 
 export default function App({ Component, pageProps }: AppProps) {
-  const { updateVisibility, bagItems } = useBagStore(store => {
-    return {
-      updateVisibility: store.updateVisibility,
-      bagItems: store.bagItems
-    }
-  })
-
   return (
     <Container>
       <MyBag />
@@ -28,12 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
           src={logoImage.src} 
           alt="" 
         />
-        <button onClick={updateVisibility}>
-          {bagItems.length > 0 && (
-            <span>{bagItems.length}</span>
-          )}
-          <Bag size={24} />
-        </button>
+        <MyBagButton />
       </Header>
 
       <Component {...pageProps} />
