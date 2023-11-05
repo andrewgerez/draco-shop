@@ -72,7 +72,11 @@ export default function MyBag() {
                 <h4>{formattedTotalSum}</h4>
               </span>
 
-              <button>Finalizar compra</button>
+              <button 
+                disabled={bagItems.length === 0}
+              >
+                Finalizar compra
+              </button>
             </Order>
           </Container>
         </Bag>

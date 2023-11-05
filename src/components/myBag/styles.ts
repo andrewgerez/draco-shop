@@ -139,5 +139,10 @@ export const Order = styled('section', {
       backgroundColor: '$purple500',
       transition: '0.3s all',
     },
+
+    '&:disabled': {
+      opacity: 0.6,
+      cursor: 'not-allowed',
+    }
   },
 })
