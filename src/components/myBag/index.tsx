@@ -5,11 +5,12 @@ import Image from 'next/image'
 import { pluralFormatter } from "../../utils/pluralFormatter"
 
 export default function MyBag() {
-  const { open, updateVisibility, bagItems } = useBagStore(store => {
+  const { open, updateVisibility, bagItems, removeFromBag} = useBagStore(store => {
     return {
       open: store.open,
       updateVisibility: store.updateVisibility,
-      bagItems: store.bagItems
+      bagItems: store.bagItems,
+      removeFromBag: store.removeFromBag
     }
   })
 
@@ -51,7 +52,9 @@ export default function MyBag() {
                     <section>
                       <p>{product.name}</p>
                       <strong>{product.price}</strong>
-                      <button>Remover</button>
+                      <button onClick={() => removeFromBag(product.id)}>
+                        Remover
+                      </button>
                     </section>
                   </Item>
                 ))}
