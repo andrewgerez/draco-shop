@@ -13,6 +13,16 @@ export default function MyBag() {
     }
   })
 
+  const totalSum = bagItems.reduce((acc, product) => {
+    const price = parseFloat(product.price.replace("R$", "").replace(",", "."))
+    return acc + price
+  }, 0)
+
+  const formattedTotalSum = totalSum.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  })
+
   return (
     <>
       {open && (
@@ -56,7 +66,7 @@ export default function MyBag() {
 
               <span>
                 <strong>Valor total</strong>
-                <h4>R$ 270,00</h4>
+                <h4>{formattedTotalSum}</h4>
               </span>
 
               <button>Finalizar compra</button>
