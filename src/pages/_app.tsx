@@ -4,12 +4,15 @@ import logoImage from '../assets/logo.png'
 import Image from "next/image"
 import { Container, Header } from "../styles/pages/app"
 import { Bag } from "phosphor-react";
+import MyBag from "../components/myBag"
 
 globalStyles()
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Container>
+      <MyBag />
+
       <Header>
         <Image 
           width={130}

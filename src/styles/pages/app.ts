@@ -1,6 +1,7 @@
 import { styled } from "..";
 
 export const Container = styled('div', {
+  position: 'relative',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',
@@ -38,3 +39,4 @@ export const Header = styled('header', {
     }
   },
 })
+
