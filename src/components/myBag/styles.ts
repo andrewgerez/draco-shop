@@ -1,4 +1,22 @@
-import { styled } from "../../styles";
+import { styled, keyframes } from "../../styles";
+
+const openAnimation = keyframes({
+  '0%': {
+    right: '-100%',
+  },
+  '100%': {
+    right: 0,
+  },
+})
+
+const hiddenAnimation = keyframes({
+  '0%': {
+    opacity: 1,
+  },
+  '100%': {
+    opacity: 0,
+  },
+})
 
 export const Bag = styled('div', {
   position: 'absolute',
@@ -25,6 +43,17 @@ export const Bag = styled('div', {
         cursor: 'pointer',
       }
     }
+  },
+
+  variants: {
+    variant: {
+      open: {
+        animation: `${openAnimation} 0.4s cubic-bezier(0.16, 1, 0.3, 1)`,
+      },
+      closed: {
+        animation: `${hiddenAnimation} 0.4s`,
+      },
+    },
   },
 })
 

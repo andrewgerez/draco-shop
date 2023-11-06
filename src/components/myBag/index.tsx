@@ -1,8 +1,8 @@
-import { X } from "phosphor-react"
-import { BadgeItem, Bag, Container, Item, ItemList, Order } from "./styles"
-import { useBagStore } from "../../store/bagStore"
+import { X } from 'phosphor-react'
+import { BadgeItem, Bag, Container, Item, ItemList, Order } from './styles'
+import { useBagStore } from '../../store/bagStore'
 import Image from 'next/image'
-import { pluralFormatter } from "../../utils/pluralFormatter"
+import { pluralFormatter } from '../../utils/pluralFormatter'
 
 export default function MyBag() {
   const { open, updateVisibility, bagItems, removeFromBag} = useBagStore(store => {
@@ -15,22 +15,22 @@ export default function MyBag() {
   })
 
   const totalSum = bagItems.reduce((acc, product) => {
-    const price = parseFloat(product.price.replace("R$", "").replace(",", "."))
+    const price = parseFloat(product.price.replace('R$', '').replace(',', '.'))
     return acc + price
   }, 0)
 
-  const formattedTotalSum = totalSum.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
+  const formattedTotalSum = totalSum.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
   })
 
   return (
     <>
       {open && (
-        <Bag>
+        <Bag variant={open ? 'open' : 'closed'}>
           <header>
             <button onClick={updateVisibility}>
-              <X size={16} weight="bold" />
+              <X size={16} weight='bold' />
             </button>
           </header>
 
@@ -46,7 +46,7 @@ export default function MyBag() {
                         src={product.imageUrl}
                         width={94}
                         height={94}
-                        alt=""
+                        alt=''
                       />
                     </BadgeItem>
                     <section>
