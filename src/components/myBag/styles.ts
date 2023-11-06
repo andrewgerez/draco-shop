@@ -11,10 +11,10 @@ const openAnimation = keyframes({
 
 const hiddenAnimation = keyframes({
   '0%': {
-    opacity: 1,
+    right: 0,
   },
   '100%': {
-    opacity: 0,
+    right: '-100%',
   },
 })
 
