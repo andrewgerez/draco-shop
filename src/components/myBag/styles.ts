@@ -9,15 +9,6 @@ const openAnimation = keyframes({
   },
 })
 
-const hiddenAnimation = keyframes({
-  '0%': {
-    right: 0,
-  },
-  '100%': {
-    right: '-100%',
-  },
-})
-
 export const Bag = styled('div', {
   position: 'absolute',
   zIndex: 1,
@@ -51,7 +42,7 @@ export const Bag = styled('div', {
         animation: `${openAnimation} 0.4s cubic-bezier(0.16, 1, 0.3, 1)`,
       },
       closed: {
-        animation: `${hiddenAnimation} 0.4s`,
+        display: 'none',
       },
     },
   },
