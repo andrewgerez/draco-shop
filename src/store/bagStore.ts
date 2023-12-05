@@ -10,7 +10,7 @@ const getInitialItems = () => {
   return [];
 };
 
-export const useBagStore = create<BagStore>((set, get) => {
+export const useBagStore = create<BagStore>((set) => {
   return {
     open: false,
     bagItems: getInitialItems(),
@@ -45,6 +45,14 @@ export const useBagStore = create<BagStore>((set, get) => {
         return {
           ...state,
           bagItems: updatedBagItems,
+        };
+      }),
+    cleanBag: () =>
+      set((state) => {
+        localStorage.removeItem("@bag-items/draco-shop");
+        return {
+          ...state,
+          bagItems: [],
         };
       }),
   };

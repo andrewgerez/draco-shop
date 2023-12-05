@@ -22,7 +22,9 @@ export const MyBagButton = () => {
   }, [])
 
   return (
-    <BagButton onClick={updateVisibility}>
+    <BagButton
+      onClick={bagItems.length > 0 && updateVisibility}
+    >
       {isClient ? bagItems?.length > 0 && (
         <span>{bagItemsQuantity}</span>
       ) : null}

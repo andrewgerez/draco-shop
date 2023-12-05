@@ -3,9 +3,13 @@ import { BadgeItem, Bag, Container, Item, ItemList, Order } from './styles'
 import { useBagStore } from '../../store/bagStore'
 import Image from 'next/image'
 import { pluralFormatter } from '../../utils/pluralFormatter'
+import { currencyFormatter } from '../../utils/currencyFormatter'
+import { useState } from 'react'
+import axios from 'axios'
+import { Product } from '../../interfaces/product'
 
 export default function MyBag() {
-  const { open, updateVisibility, bagItems, removeFromBag} = useBagStore(store => {
+  const { open, updateVisibility, bagItems, removeFromBag } = useBagStore(store => {
     return {
       open: store.open,
       updateVisibility: store.updateVisibility,
@@ -13,16 +17,43 @@ export default function MyBag() {
       removeFromBag: store.removeFromBag
     }
   })
+  const products: Product[] = Object.keys(bagItems).map(item => bagItems[item]);
+
+  const getIndividualSum = (product) => {
+    const price = parseFloat(product.price.replace('R$', '').replace(',', '.'))
+    const sum = price * product.quantity;
+
+    return currencyFormatter(sum)
+  }
 
   const totalSum = bagItems.reduce((acc, product) => {
     const price = parseFloat(product.price.replace('R$', '').replace(',', '.'))
-    return acc + price
+    const sum = price * product.quantity
+    return acc + sum
   }, 0)
 
-  const formattedTotalSum = totalSum.toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  })
+  const formattedTotalSum = currencyFormatter(totalSum)
+
+  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
+
+  async function handleBuyProduct() {
+    try {
+      setIsCreatingCheckoutSession(true);
+
+      const response = await axios.post('/api/checkout', {
+        products: products,
+      })
+
+      const { checkoutUrl } = response.data;
+
+      if (typeof window !== undefined) {
+        window.location.href = checkoutUrl;
+      }
+    } catch (error) {
+      setIsCreatingCheckoutSession(false)
+      alert('Falha ao redirecionar ao checkout!')
+    }
+  }
 
   return (
     <>
@@ -51,7 +82,7 @@ export default function MyBag() {
                     </BadgeItem>
                     <section>
                       <p>{product.name}</p>
-                      <strong>{product.price}</strong>
+                      <strong>{getIndividualSum(product)}</strong>
                       <button onClick={() => removeFromBag(product.id)}>
                         Remover
                       </button>
@@ -72,8 +103,9 @@ export default function MyBag() {
                 <h4>{formattedTotalSum}</h4>
               </span>
 
-              <button 
-                disabled={bagItems.length === 0}
+              <button
+                onClick={handleBuyProduct}
+                disabled={isCreatingCheckoutSession || bagItems.length === 0}
               >
                 Finalizar compra
               </button>

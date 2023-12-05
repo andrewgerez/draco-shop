@@ -1,4 +1,4 @@
-interface Product {
+export interface Product {
   id: string;
   name: string;
   imageUrl: string;
@@ -14,4 +14,5 @@ export interface BagStore {
   updateVisibility: () => void;
   addToBag: (product: Product) => void;
   removeFromBag: (id: string) => void;
+  cleanBag: () => void;
 }
