@@ -17,7 +17,15 @@ export const useBagStore = create<BagStore>((set, get) => {
     updateVisibility: () => set((state) => ({ open: !state.open })),
     addToBag: (product) =>
       set((state) => {
-        const updatedBagItems = [...state.bagItems, product];
+        const updatedBagItems = [...state.bagItems];
+        const existingProduct = updatedBagItems.find((item) => item.id === product.id);
+
+        if (existingProduct) {
+          existingProduct.quantity += 1;
+        } else {
+          updatedBagItems.push({ ...product, quantity: 1 });
+        }
+
         localStorage.setItem(
           "@bag-items/draco-shop",
           JSON.stringify(updatedBagItems)

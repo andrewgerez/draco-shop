@@ -58,7 +58,7 @@ export default function Product({ product }: Product) {
 
           <p>{product.description}</p>
 
-          <button onClick={() => addToBag({...product, id: product.id + "-" + uuid()})}>
+          <button onClick={() => addToBag(product)}>
             Colocar na sacola
           </button>
         </ProductDetails>
@@ -96,7 +96,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ para
           currency: 'BRL',
         }).format(price.unit_amount / 100),
         description: product.description,
-        defaultPriceId: price.id,
+        defaultPriceId: price.id
       }
     },
     revalidate: 60 * 60 * 1, // 1 hour

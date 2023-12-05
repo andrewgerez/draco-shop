@@ -13,6 +13,10 @@ export const MyBagButton = () => {
     }
   })
 
+  const bagItemsQuantity = bagItems
+    .map((item) => item.quantity)
+    .reduce((acc, curr) => acc + curr, 0);
+
   useEffect(() => {
     setIsClient(true)
   }, [])
@@ -20,7 +24,7 @@ export const MyBagButton = () => {
   return (
     <BagButton onClick={updateVisibility}>
       {isClient ? bagItems?.length > 0 && (
-        <span>{bagItems?.length}</span>
+        <span>{bagItemsQuantity}</span>
       ) : null}
       <Bag size={24} />
     </BagButton>

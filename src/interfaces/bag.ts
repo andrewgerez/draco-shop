@@ -5,6 +5,7 @@ interface Product {
   price: string;
   description: string;
   defaultPriceId: string;
+  quantity: number;
 }
 
 export interface BagStore {
