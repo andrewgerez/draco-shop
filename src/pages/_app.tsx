@@ -3,9 +3,9 @@ import { globalStyles } from "../styles/global"
 import logoImage from '../assets/logo.png'
 import Image from "next/image"
 import { Container, Header } from "../styles/pages/app"
-import MyBag from "../components/MyBag"
 import { MyBagButton } from "../components/MyBag/MyBagButton"
 import { useRouter } from "next/router"
+import { MyBag } from "../components/MyBag"
 
 globalStyles();
 

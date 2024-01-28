@@ -8,7 +8,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { Product } from '../../interfaces/product'
 
-export default function MyBag() {
+export const MyBag = () => {
   const { open, updateVisibility, bagItems, removeFromBag } = useBagStore(store => {
     return {
       open: store.open,
