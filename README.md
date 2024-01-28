@@ -35,7 +35,6 @@
 ## About The Project
 
 [![Pomodoro Timer - Environment][product-screenshot]]()
-https://pomodoro-timer-kyoiie63a-drewdevelopment.vercel.app
 
 
 ### Built With
