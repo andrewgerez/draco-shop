@@ -34,6 +34,8 @@ export const MyBag = () => {
 
   const formattedTotalSum = currencyFormatter(totalSum)
 
+  const totalQuantity = bagItems.reduce((sum, product) => sum + product.quantity, 0);
+  
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false)
 
   async function handleBuyProduct() {
@@ -95,7 +97,7 @@ export const MyBag = () => {
             <Order>
               <span>
                 <p>Quantidade</p>
-                <p>{pluralFormatter(bagItems.length, 'item', 'itens')}</p>
+                <p>{pluralFormatter(totalQuantity, 'item', 'itens')}</p>
               </span>
 
               <span>
