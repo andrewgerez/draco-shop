@@ -60,7 +60,7 @@ Prerequisites for installing and running the application locally.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/drewdevelopment/draco-shop.git
+   git clone https://github.com/andrewgerez/draco-shop.git
    ```
 2. Install NPM packages
    ```sh
@@ -76,7 +76,7 @@ Prerequisites for installing and running the application locally.
 
 Andrew Gerez - [Linkedin](https://www.linkedin.com/in/andrewgerez/) - andrewgerez18@gmail.com
 
-Project Link: [https://github.com/drewdevelopment/draco-shop](https://github.com/drewdevelopment/draco-shop)
+Project Link: [https://github.com/andrewgerez/draco-shop](https://github.com/andrewgerez/draco-shop)
 
 
 [product-screenshot]: src/assets/draco-shop.png
